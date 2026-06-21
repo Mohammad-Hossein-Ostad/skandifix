@@ -1,9 +1,9 @@
-import Header from "./components/header/header.component";
+import Header from "./components/Header.tsx"
 
 export default function Home() {
   return (
     <>
-      <Header />
+    <Header />
     </>
   );
 }
