@@ -1,6 +1,6 @@
 export default function Navbar() {
   return (
-    <div className="flex-1 content-center">
+    <div className="flex flex-col justify-center">
       <ul className="inline-flex">
         <li className="mx-5">
           <a href="https://www.skandifix.com">Skandifix</a>
