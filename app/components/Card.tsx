@@ -1,29 +1,44 @@
-import Image from "next/image";
-import ContactCTA from "./PhoneLink";
+import Image, { StaticImageData } from "next/image"
 
-export default function Card() {
+type ImageInformation = "cables" | "construction" | "emergency" | "smart_device" | "tap";
+
+type Title = "Electrical installations & fault finding" |
+  "Plumbing & water systems" |
+  "Renovations – residential & commercial" |
+  "Smart systems & appliances" |
+  "Emergency repairs";
+
+type Description = "Certified installations, upgrades, new sockets, panels, lighting systems and troubleshooting." |
+  "Repairs, installations, leak detection, boilers, water heaters and pressure systems." |
+  "Bathrooms, kitchens, flooring, tiling, painting and complete property refurbishments." |
+  "Installation and repair of technical systems for homes and businesses." |
+  "Fast response when something stops working.";
+
+
+type CardProps = {
+  src: StaticImageData,
+  information: ImageInformation,
+  title: Title,
+  description: Description
+}
+
+export default function Card({ src, information, title, description }: CardProps) {
   return (
-    <div className="flex justify-around items-center py-10">
-      <div className="w-2/5">
-        <p className="text-lg/8">
-          Scandinavian precision. Spanish compliance. Reliable renovations and technical services you can trust on the Costa del Sol. Certified workmanship, transparent pricing, and guaranteed results — done right the first time.
-        </p>
-        <ContactCTA
-          href="https://wa.me/34613118814"
-          variant="WhatsApp Us"
-        />
-        <ContactCTA
-          href="/contact"
-          variant="Get a quote"
-        />
-      </div>
+    <div className="max-w-3xs border border-gray-200 rounded-2xl shadow-xs">
       <div>
         <Image
-          src="https://static.wixstatic.com/media/35da7a_2f64e1abbf3544b1b1d148d87475c49a~mv2.jpg/v1/fill/w_828,h_1104,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/jason-wang-5MG8cQbw-T8-unsplash.jpg"
-          width={400}
-          height={400}
-          alt="portal image"
+          src={src}
+          width={340}
+          height={340}
+          alt={`picture of ${information}`}
+          className="rounded-2xl"
         />
+        <div className="p-2">
+          <div>
+            <p className="text-2xl underline font-bold">{title}</p>
+            <p className="mt-3 text-base/7">{description}</p>
+          </div>
+        </div>
       </div>
     </div>
   )
